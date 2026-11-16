@@ -1,0 +1,268 @@
+---
+import Base from '../layouts/Base.astro';
+
+const CONTACT = 'mailto:contacto@cinematecalivingroom.cl?subject=Quiero%20Cinemateca%20Living%20Room';
+
+const features = [
+  { icon: '💾', title: 'Directo desde el USB', text: 'Lee los discos conectados al televisor y reproduce los archivos desde el propio USB. Nada se sube a internet ni a ningún servidor.' },
+  { icon: '🎬', title: 'Video', text: 'Lista con vista previa y reproductor con retroceder, adelantar, video anterior y siguiente.' },
+  { icon: '🖼️', title: 'Fotos', text: 'Presentación automática con temporizador y transiciones a elección.' },
+  { icon: '🎵', title: 'Audio', text: 'Reproductor que sigue sonando en la parte inferior mientras navegas.' },
+  { icon: '🎞️', title: 'Foto + Audio', text: 'Presentaciones de fotos con música de fondo para reuniones y recuerdos en familia.' },
+  { icon: '🎮', title: 'Pensado para el control', text: 'Navegación con las flechas del control remoto (D-pad). El botón Atrás siempre cierra el nivel actual.' },
+];
+
+const steps = [
+  { n: '01', title: 'Instala la app', text: 'Se instala como una aplicación más del televisor y aparece en el menú de apps.' },
+  { n: '02', title: 'Conecta tu USB', text: 'Fotos, películas y música en un disco o pendrive conectado al televisor.' },
+  { n: '03', title: 'Disfruta en grande', text: 'Abre «Carpeta USB» y navega tu biblioteca con el control remoto.' },
+];
+
+const compat = [
+  { version: 'Android 9 (API 28)', status: 'Probado en un Android TV real', tone: 'ok' },
+  { version: 'Android 10 y superiores', status: 'Compatible por diseño', tone: 'info' },
+  { version: 'Android 8.1 o anterior', status: 'No soportado (la app avisa al iniciar)', tone: 'off' },
+];
+---
+<Base
+  title="Cinemateca Living Room — Tus fotos, videos y música del USB en tu Android TV"
+  description="App para Android TV que muestra fotos, reproduce videos y música desde un USB, controlada con el mando. Sin nube, sin cuentas, sin complicaciones."
+>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#inicio" aria-label="Cinemateca Living Room, inicio">
+        <img src="/favicon.svg" alt="" width="32" height="32" />
+        <span>Cinemateca <strong>Living Room</strong></span>
+      </a>
+      <nav aria-label="Secciones">
+        <a href="#funciones">Funciones</a>
+        <a href="#demo">Demo</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#compatibilidad">Compatibilidad</a>
+      </nav>
+      <a class="btn btn--primary nav__cta" href={CONTACT}>Contáctanos</a>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div>
+          <span class="eyebrow">App para Android TV</span>
+          <h1>Tu cine en casa, <span class="gradient-text">directo desde el USB</span></h1>
+          <p class="lead">
+            Cinemateca Living Room convierte tu televisor en una sala para ver tus fotos, videos y
+            música. Conectas el pendrive, tomas el control remoto y listo: sin nube, sin cuentas,
+            sin complicaciones.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href={CONTACT}>Solicitar la app</a>
+            <a class="btn btn--ghost" href="#demo">▶ Ver demo</a>
+          </div>
+          <ul class="hero__badges" aria-label="Destacados">
+            <li>🔒 100% local y privado</li>
+            <li>📺 Optimizado para TV</li>
+            <li>🎮 Control con el mando</li>
+          </ul>
+        </div>
+        <div class="frame hero__shot">
+          <img src="/media/02-biblioteca-con-usb.png" width="1920" height="1080"
+               alt="Biblioteca de Cinemateca Living Room con fotos, videos y audio del USB" fetchpriority="high" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Funciones -->
+    <section id="funciones" class="section section--alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Funciones</span>
+          <h2>Todo tu contenido, en la pantalla más grande de la casa</h2>
+          <p class="lead">Una sola app para fotos, películas y música, diseñada para usarse desde el sofá.</p>
+        </div>
+        <div class="grid grid--3">
+          {features.map((f) => (
+            <article class="card feature">
+              <span class="feature__icon" aria-hidden="true">{f.icon}</span>
+              <h3>{f.title}</h3>
+              <p>{f.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo -->
+    <section id="demo" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Demo</span>
+          <h2>Mira cómo se ve en el televisor</h2>
+          <p class="lead">Recorrido real de la app en un Android TV, con un USB cargado.</p>
+        </div>
+        <div class="frame demo__video">
+          <video src="/media/demo-cinemateca.mp4" poster="/media/01-inicio-sin-usb.png"
+                 controls muted playsinline preload="none" width="1920" height="1080">
+            Tu navegador no puede reproducir el video.
+          </video>
+        </div>
+        <div class="grid grid--3 shots">
+          <figure>
+            <div class="frame"><img src="/media/01-inicio-sin-usb.png" width="1920" height="1080" loading="lazy" alt="Pantalla de inicio" /></div>
+            <figcaption>Pantalla de inicio</figcaption>
+          </figure>
+          <figure>
+            <div class="frame"><img src="/media/02-biblioteca-con-usb.png" width="1920" height="1080" loading="lazy" alt="Biblioteca con el USB conectado" /></div>
+            <figcaption>Biblioteca con el USB conectado</figcaption>
+          </figure>
+          <figure>
+            <div class="frame"><img src="/media/03-lista-de-videos.png" width="1280" height="720" loading="lazy" alt="Lista de videos con vista previa" /></div>
+            <figcaption>Lista de videos con vista previa</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo funciona -->
+    <section id="como-funciona" class="section section--alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Cómo funciona</span>
+          <h2>Listo en tres pasos</h2>
+        </div>
+        <ol class="grid grid--3 steps">
+          {steps.map((s) => (
+            <li class="card">
+              <span class="steps__n">{s.n}</span>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Compatibilidad + privacidad -->
+    <section id="compatibilidad" class="section">
+      <div class="container grid grid--2 compat">
+        <div>
+          <span class="eyebrow">Compatibilidad</span>
+          <h2>Hecha para Android TV</h2>
+          <p class="lead">Funciona en televisores y TV Box con Android TV 9 o superior.</p>
+          <ul class="compat__list">
+            {compat.map((c) => (
+              <li class={`compat__item compat__item--${c.tone}`}>
+                <strong>{c.version}</strong>
+                <span>{c.status}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="card privacy">
+          <span class="eyebrow">Privacidad</span>
+          <h3>Tus recuerdos se quedan contigo</h3>
+          <p>
+            La app no sube archivos, no pide cuentas y no necesita internet para reproducir. Todo se
+            lee directamente desde el USB conectado al televisor.
+          </p>
+          <ul>
+            <li>Sin registro ni suscripciones</li>
+            <li>Sin publicidad</li>
+            <li>Sin envío de datos a servidores</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta">
+      <div class="container cta__box">
+        <h2>¿Quieres Cinemateca Living Room en tu televisor?</h2>
+        <p class="lead">Escríbenos y te ayudamos con la instalación, o cuéntanos qué necesitas para tu negocio o tu hogar.</p>
+        <a class="btn btn--primary" href={CONTACT}>Contáctanos</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© {new Date().getFullYear()} Cinemateca Living Room</span>
+      <a href="#inicio">Volver arriba ↑</a>
+    </div>
+  </footer>
+</Base>
+
+<style>
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(11, 11, 18, .8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav__inner { display: flex; align-items: center; gap: 2rem; height: 68px; }
+  .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; font-size: 1.05rem; }
+  .brand strong { color: var(--accent); }
+  .nav nav { display: flex; gap: 1.5rem; margin-left: auto; }
+  .nav nav a { text-decoration: none; color: var(--muted); font-size: .95rem; }
+  .nav nav a:hover { color: var(--text); }
+  .nav__cta { padding: .55rem 1.1rem; }
+
+  .hero {
+    padding: 5.5rem 0 6rem;
+    background:
+      radial-gradient(700px 400px at 85% 10%, rgba(245, 176, 65, .16), transparent 70%),
+      radial-gradient(600px 400px at 0% 100%, rgba(232, 116, 59, .12), transparent 70%);
+  }
+  .hero__grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 3.5rem; align-items: center; }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: .8rem; margin: 2rem 0 1.75rem; }
+  .hero__badges { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; color: var(--muted); font-size: .95rem; }
+  .hero__shot { transform: perspective(1400px) rotateY(-6deg); }
+
+  .feature__icon { font-size: 1.8rem; display: block; margin-bottom: .9rem; }
+  .feature p, .steps p { color: var(--muted); margin: 0; }
+
+  .demo__video { max-width: 960px; margin: 0 auto 3rem; }
+  .shots figure { margin: 0; }
+  .shots figcaption { color: var(--muted); font-size: .92rem; margin-top: .7rem; text-align: center; }
+
+  .steps { list-style: none; padding: 0; margin: 0; }
+  .steps__n { font-size: 2.2rem; font-weight: 800; color: var(--accent); opacity: .85; display: block; margin-bottom: .4rem; }
+
+  .compat { align-items: center; gap: 3rem; }
+  .compat__list { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .75rem; }
+  .compat__item {
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    padding: 1rem 1.2rem; border-radius: 12px; border: 1px solid var(--border); background: var(--card);
+    border-left-width: 4px;
+  }
+  .compat__item span { color: var(--muted); }
+  .compat__item--ok { border-left-color: #4ade80; }
+  .compat__item--info { border-left-color: var(--accent); }
+  .compat__item--off { border-left-color: #6b6b80; }
+  .privacy ul { color: var(--muted); padding-left: 1.2rem; margin-bottom: 0; }
+  .privacy p { color: var(--muted); }
+
+  .cta__box {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, rgba(245, 176, 65, .14), rgba(232, 116, 59, .08)), var(--card);
+  }
+  .cta__box .lead { margin: 0 auto 2rem; }
+
+  .footer { border-top: 1px solid var(--border); padding: 2rem 0; color: var(--muted); font-size: .92rem; }
+  .footer__inner { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .footer a { text-decoration: none; }
+  .footer a:hover { color: var(--accent); }
+
+  @media (max-width: 900px) {
+    .nav nav { display: none; }
+    .nav__cta { margin-left: auto; }
+    .hero { padding: 3.5rem 0 4rem; }
+    .hero__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero__shot { transform: none; }
+    .section { padding: 4.5rem 0; }
+  }
+</style>
