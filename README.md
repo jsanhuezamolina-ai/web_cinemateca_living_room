@@ -9,17 +9,17 @@ mando del televisor.
 La app tiene su propio repositorio:
 [jsanhuezamolina-ai/cinemateca-living-room](https://github.com/jsanhuezamolina-ai/cinemateca-living-room).
 
-![Portada de la landing](docs/screenshots/01-hero.png)
+![Portada de la landing](public/media/01-hero.png)
 
 ## Vista previa
 
 | Funciones | Compatibilidad y privacidad |
 |---|---|
-| ![Sección de funciones](docs/screenshots/02-funciones.png) | ![Sección de compatibilidad](docs/screenshots/04-compatibilidad.png) |
+| ![Sección de funciones](public/media/02-funciones.png) | ![Sección de compatibilidad](public/media/04-compatibilidad.png) |
 
 | Demo en video y capturas | Móvil |
 |---|---|
-| ![Sección de demo](docs/screenshots/03-demo.png) | <img src="docs/screenshots/05-movil.png" alt="Landing en móvil" width="260" /> |
+| ![Sección de demo](public/media/03-demo.png) | <img src="public/media/05-movil.png" alt="Landing en móvil" width="260" /> |
 
 ## Secciones
 
@@ -62,8 +62,7 @@ src/
   styles/global.css       Colores, tipografía, botones, tarjetas y grillas
 public/
   favicon.svg
-  media/                  Capturas y video demo de la app
-docs/screenshots/         Capturas de la landing para este README
+  media/                  Capturas de la landing y de la app, y el video demo
 .github/workflows/        CI: instala, revisa y compila en cada push y pull request
 ```
 
